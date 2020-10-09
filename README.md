@@ -8,13 +8,12 @@ I ❤️ Kotlin. It's a breath of fresh air when coming from Java, and makes cod
 
 ## JetPack - Architecture Components & AndroidX:
 Would be a loss to build an application without these libraries. With Google advocating MVVM, and these libraries working so flawlessly with each other, it really leaves you no choice.
+
+MVVM
+
 Room - Database Layer
 
 <b>ViewModel</b> - Data Preservation across configuration changes
-
-<b>Lifecycle</b> - Handling annoying issues with Activities / Fragments namely when pushing data during false states
-
-<b>Navigation</b> - Handling Intent / Fragment Transactions, isolating sources from destinations and easy argument passing!
 
 <b>AndroidX, Material Components</b> - For embracing Material Design and backporting API features to minSdk
 
