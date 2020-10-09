@@ -1,19 +1,20 @@
 package com.example.carinfo_test.ui.main
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carinfo_test.R
 import com.example.carinfo_test.data.database.CarInfoModel
 import com.example.carinfo_test.utils.loadImage
+import com.google.android.material.transition.MaterialContainerTransform
 import kotlinx.android.synthetic.main.car_list_item.view.*
 
 class CarListAdapter(
-    private val onItemClick: (item: CarInfoModel) -> Unit
+    private val onItemClick: (item: CarInfoModel, view: View) -> Unit
 ) : ListAdapter<CarInfoModel, CarListAdapter.CarViewHolder>(object : DiffUtil.ItemCallback<CarInfoModel>() {
     override fun areItemsTheSame(oldItem: CarInfoModel, newItem: CarInfoModel): Boolean {
         return oldItem == newItem
@@ -42,13 +43,14 @@ class CarListAdapter(
 
     class CarViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(item: CarInfoModel, onItemClick: (item: CarInfoModel) -> Unit) {
+        fun bind(item: CarInfoModel, onItemClick: (item: CarInfoModel, view: View) -> Unit) {
             with(itemView) {
                 carImage.loadImage(item.imageUrl)
                 val ownerName = item.ownerName
                 carName.text = ownerName
                 setOnClickListener {
-                    onItemClick(item)
+                    ViewCompat.setTransitionName(it, context.getString(R.string.transitionName))
+                    onItemClick(item, it)
                 }
             }
         }

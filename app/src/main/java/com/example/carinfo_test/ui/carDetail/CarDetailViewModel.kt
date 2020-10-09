@@ -11,6 +11,7 @@ class CarDetailViewModel(
 
     val carId = MutableLiveData<Int>()
 
+    //Will trigger this function whenever the carId live data changes so that we don't need to observe it.
     fun getCar() = Transformations.switchMap(carId){
         repo.getCar(it)
     }

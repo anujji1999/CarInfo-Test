@@ -1,14 +1,20 @@
 package com.example.carinfo_test.ui.carDetail
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.Window
 import com.example.carinfo_test.R
 import com.example.carinfo_test.utils.*
+import com.google.android.material.transition.platform.MaterialContainerTransform
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import kotlinx.android.synthetic.main.activity_car_detail.*
 import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
@@ -31,13 +37,31 @@ class CarDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_car_detail)
-        setToolbar(toolbar, title = getString(R.string.carInfo), indicator = R.drawable.ic_baseline_arrow_back_24)
 
+        //Material Motion Animation
+        window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+        findViewById<View>(android.R.id.content).transitionName = getString(R.string.transitionName)
+        setEnterSharedElementCallback(MaterialContainerTransformSharedElementCallback())
+        window.sharedElementEnterTransition = MaterialContainerTransform().apply {
+            addTarget(android.R.id.content)
+            duration = 500L
+            scrimColor = Color.TRANSPARENT
+        }
+        window.sharedElementReturnTransition = MaterialContainerTransform().apply {
+            addTarget(android.R.id.content)
+            duration = 500L
+            scrimColor = Color.TRANSPARENT
+        }
+
+        setContentView(R.layout.activity_car_detail)
+        setToolbar(toolbar, indicator = R.drawable.ic_baseline_arrow_back_24)
+
+        //Car Id from intent to viewmodel so that value is assigned and will be used during orientaion change
         vm.carId.value = carId
 
         vm.getCar().observe(this){
             carImageView.loadImage(it.imageUrl)
+            toolbar.title = it.ownerName
             ownerNameTv.text = it.ownerName
             ownerShipTv.text = it.ownerShip
             fuelTypeTv.text = it.fuelType

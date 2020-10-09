@@ -15,4 +15,5 @@
     <string name="carNumber">Registration Number</string>
     <string name="carInfo">Car Info</string>
     <string name="no_data">No data to share right now.</string>
+    <string name="transitionName">cardTransition</string>
 </resources>
