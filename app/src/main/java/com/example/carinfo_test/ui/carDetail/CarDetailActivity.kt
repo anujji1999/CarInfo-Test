@@ -61,7 +61,13 @@ class CarDetailActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.share ->{
                 if (::shareText.isInitialized){
-                    shareText.shareText(applicationContext)
+                    val intent2 = Intent().apply {
+                        action =  Intent.ACTION_SEND
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        type = "text/plain"
+                        putExtra(Intent.EXTRA_TEXT, shareText)
+                    }
+                    startActivity(Intent.createChooser(intent2, "Share via"))
                 }else{
                     toolbar.showSnackbar(getString(R.string.no_data))
                 }

@@ -85,17 +85,3 @@ fun ImageView.loadImage(url: String, originalSize: Boolean = false){
     }
     glide.into(this)
 }
-
-fun String.shareText(context: Context){
-    val intent2 = Intent().apply {
-        action =  Intent.ACTION_SEND
-        flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        type = "text/plain"
-        putExtra(Intent.EXTRA_TEXT, this@shareText)
-    }
-    try {
-        context.startActivity(Intent.createChooser(intent2, "Share via"))
-    }catch (e: Exception){
-        e.printStackTrace()
-    }
-}
