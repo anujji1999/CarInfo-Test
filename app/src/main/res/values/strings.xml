@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">CarInfo-Test</string>
+    <string name="trending">Trending</string>
+    <string name="ownerName">Owner Name</string>
+    <string name="share">Share</string>
+    <string name="name">Name</string>
+    <string name="ownerShip">OwnerShip</string>
+    <string name="vehicleClass">Vehicle Class</string>
+    <string name="financeName">Financer\'s Name</string>
+    <string name="modelMaker">Model Maker</string>
+    <string name="registrationDate">Registration Date</string>
+    <string name="vehicleAge">Vehicle Age</string>
+    <string name="insuranceExp">Insurance Expiry</string>
+    <string name="fuelType">Fuel Type</string>
+    <string name="carNumber">Registration Number</string>
+    <string name="carInfo">Car Info</string>
+    <string name="no_data">No data to share right now.</string>
+</resources>
