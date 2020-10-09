@@ -18,8 +18,6 @@ Room - Database Layer
 
 <b>AndroidX, Material Components</b> - For embracing Material Design and backporting API features to minSdk
 
-<b>Paging 3</b> - sets up a Repository that will use the local database to page in data for the UI and also back-fill the database from the network as the user reaches to the end of the data in the database.
-
 ## Koin - Dependency Injection:
 Sick and tired of Dagger in Production, and annoyed by it slowing down my build, I turned to a substitute. Koin seemed to be the recommended (and a more established) library for Android, however I chose Koin for it's sheer simplicity. It also made strides in performance in v2.0, which makes it my current choice for DI without code generation.
 also made strides in performance , which makes it my current choice for DI without code generation.
